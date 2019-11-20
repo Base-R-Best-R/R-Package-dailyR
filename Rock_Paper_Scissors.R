@@ -8,8 +8,7 @@ RPS <- function(choice){
   # draw as unique event
   if(choice == NPC){
     list("Did I win?" = "Draw", "Opponent" = paste("Your opponent chose", NPC))
-    
-  }
+    }
   # All combinations that result in a win
   else if(choice == "Rock" & NPC == "Scissors" | choice == "Paper" & NPC == "Rock" | choice == "Scissors" &
           NPC == "Paper"){
