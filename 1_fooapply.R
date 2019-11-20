@@ -1,6 +1,6 @@
 # fooapply allows one to apply different simple functions to a vector.
-# Functions to apply have to simple enough to only need the specification of a vector.
-# The desired functions have to be fed into the function as a string and typo will lead to an error.
+# Functions to apply have to be simple enough to only need the specification of a vector.
+# The desired functions have to be fed into the function as a string and typos will lead to an error.
 fooapply <- function(x, functions = c("mean", "median", "sd", "IQR", "quantile"), na.rm = T){
   func <- functions
   lis <- list()
