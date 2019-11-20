@@ -6,7 +6,7 @@ binc <- function(n, k){
 }
 # comb / perm function
 # where rep = T represents wheater elements are replaced or not and perm = T displays that the permutation 
-# of importance.
+#is of importance.
 comb_solv <- function(n, k, rep = T, perm = T){
   if(rep == T & perm == T){
     return(n^k)
