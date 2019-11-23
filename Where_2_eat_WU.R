@@ -1,0 +1,42 @@
+# Where 2 eat function 
+# Scrapes Lunch menus of 2 WU campus restaurants the Mensa and Library Cafe.
+# Running the function will install packages required and call then return the menus of the current day
+# note that weekends will yield a few empy strings and Null since there ar eno lunch menus on weekends
+########################################################################################################
+where.2.eat <- function(){
+  #to make sure every needed package is installed and loaded
+  get.package <- function(packages){
+    for( i in 1:length(packages)){
+      if(!require(packages[i], character.only = T)){
+        install.packages(packages[i])
+      }
+      library(packages[i], character.only = T)
+    }
+  }
+  get.package(c("dplyr", "rvest", "lubridate"))
+  #
+  library <- html("https://www.library-cafe.at/tagesmenue-wien/")
+  #
+  library.text <- library %>%
+    html_nodes("span") %>%
+    html_text()
+  #
+  library.tag <- library.text[which(substr(library.text, 1, 6) %in% c("Montag", "Dienst", "Mittwo","Donner", "Freita"))]
+  #
+  library.tag.ex <- library.tag[seq.int(1, length(library.tag), 3)]
+  names(library.tag.ex) <- c("Montag", "Dienst", "Mittwo","Donner", "Freita")
+  #
+  l <- which(substring(weekdays(Sys.Date()), first =  1, last = 6) == names(library.tag.ex))
+  ##Mensa##
+  mensa <- html("http://www.wumensa.at/")
+  #
+  mensa.text <- mensa %>%
+    html_nodes(".text_umal") %>%
+    html_text()
+  #
+  mensa.text.ex <- mensa.text[c(1, 2, 4, 5, 7, 8, 10, 11, 13, 14)]
+  ##return##
+  return(list("Mensa" = mensa.text.ex, "Library" = cat(library.tag.ex[l])))
+}
+#
+where.2.eat()
