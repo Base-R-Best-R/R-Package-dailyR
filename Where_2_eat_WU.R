@@ -4,6 +4,8 @@
 # note that weekends will yield a few empy strings and Null since there are no lunch menus on weekends
 ########################################################################################################
 where.2.eat <- function(){
+  #Supreess warning messages such as package loaded etc. 
+  suppressWarnings({
   #to make sure every needed package is installed and loaded
   get.package <- function(packages){
     for( i in 1:length(packages)){
@@ -34,9 +36,19 @@ where.2.eat <- function(){
     html_nodes(".text_umal") %>%
     html_text()
   # remove information thats not of interest
-  mensa.text.ex <- mensa.text[c(1, 2, 4, 5, 7, 8, 10, 11, 13, 14)]
+  mensa.text.ex <- mensa.text[c(1, 2, 4, 5, 13)]
+  # Convert to list and strsplit according to newlines
+  j <- list()
+  for(i in 1:length(mensa.text.ex)){
+    j[[i]] <- strsplit(mensa.text.ex[i], "\n")
+  }
+  j[[3]] <- c(j[[3]], j[[4]])
+  j <- j[c(1, 2, 3, 5)]
+  #names
+  names(j) <- c("Eco 1", "Eco 2", "Pizza", "Global")
   ##return##
-  return(list("Mensa" = mensa.text.ex, "Library" = cat(library.tag.ex[l])))
+  return(list( "Mensa" = j, "Library" = strsplit(library.tag.ex[l], "\n")))})
 }
 #
 where.2.eat()
+
