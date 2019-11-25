@@ -4,8 +4,9 @@
 # note that weekends will yield a few empy strings and Null since there are no lunch menus on weekends
 ########################################################################################################
 where.2.eat <- function(){
-  #Supreess warning messages such as package loaded etc. 
+  #Supreess warnings and messages 
   suppressWarnings({
+    suppressMessages({
   #to make sure every needed package is installed and loaded
   get.package <- function(packages){
     for( i in 1:length(packages)){
@@ -47,7 +48,7 @@ where.2.eat <- function(){
   #names
   names(j) <- c("Eco 1", "Eco 2", "Pizza", "Global")
   ##return##
-  return(list( "Mensa" = j, "Library" = strsplit(library.tag.ex[l], "\n")))})
+  return(list( "Mensa" = j, "Library" = strsplit(library.tag.ex[l], "\n")))})})
 }
 #
 where.2.eat()
