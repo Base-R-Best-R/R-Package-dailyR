@@ -14,7 +14,7 @@ RPS <- function(choice){
           NPC == "Paper"){
     list("Did I win?" = "You won", "Opponent" = paste("Your opponent chose", NPC))
   }
-  #remaining combinations 
+  # All combinations that result in a loss
   else{
     list("Did I win?" = "You lost", "Opponent" = paste("Your opponent chose", NPC))
   }
