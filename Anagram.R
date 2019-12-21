@@ -3,7 +3,7 @@
 # To remove case sensitifity all strings are converted to lower case 
 library(stringr)
 # Function
-Anna <- function(x, y){
+ana <- function(x, y){
   if(sum(str_count(tolower(x), letters) == str_count(tolower(y), letters)) == length(letters)){
     "Those two vectors are an anagram of one another"
   } 
@@ -12,5 +12,5 @@ Anna <- function(x, y){
   }
 }
 # Example
-Anna("Silent", "Listen")
+ana("Silent", "Listen")
 #[1] "Those two vectors are an anagram of one another"
