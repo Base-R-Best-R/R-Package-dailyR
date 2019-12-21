@@ -13,4 +13,4 @@ ana <- function(x, y){
 }
 # Example
 ana("Silent", "Listen")
-#[1] "Those two vectors are an anagram of one another"
+#[1] "Those two strings are an anagram of one another"
