@@ -1,23 +1,32 @@
 # Basic Rock Paper Scissors game.
 # Enter your choice as a string with the first letter capitalized.
-# Note that should you enter your choice written incorrectly or without the first letter capitalized
+# Note that should you enter your choice written incorrectly 
 # you will always lose. 
 RPS <- function(choice){
+  choice <- tolower(choice)
+  if(!choice %in% c("rock", "paper", "scissors")){
+    stop("Error: Your choice does not match either rock, paper or scissors.")
+  }
   #sample Pc choice
-  NPC <- sample(c("Rock", "Paper", "Scissors"), size = 1)
+  NPC <- sample(c("rock", "paper", "scissors"), size = 1)
   # draw as unique event
   if(choice == NPC){
     list("Did I win?" = "Draw", "Opponent" = paste("Your opponent chose", NPC))
     }
   # All combinations that result in a win
-  else if(choice == "Rock" & NPC == "Scissors" | choice == "Paper" & NPC == "Rock" | choice == "Scissors" &
-          NPC == "Paper"){
+  else if(choice == "rock" & NPC == "scissors" | choice == "paper" & NPC == "rock" | choice == "scissors" &
+          NPC == "paper"){
     list("Did I win?" = "You won", "Opponent" = paste("Your opponent chose", NPC))
   }
-  # All combinations that result in a loss
+  # All remaining combinations result in a loss
   else{
     list("Did I win?" = "You lost", "Opponent" = paste("Your opponent chose", NPC))
   }
 }
-RPS("Rock")
+#Example
+RPS("Paper")
+#$`Did I win?`
+#[1] "Draw"
 
+#$Opponent
+#[1] "Your opponent chose paper"
