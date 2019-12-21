@@ -1,5 +1,5 @@
 # Basic Rock Paper Scissors game.
-# Enter your choice as a string with the first letter capitalized.
+# Enter your choice as a string.
 # Note that should you enter your choice written incorrectly 
 # you will always lose. 
 RPS <- function(choice){
