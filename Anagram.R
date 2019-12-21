@@ -5,10 +5,10 @@ library(stringr)
 # Function
 ana <- function(x, y){
   if(sum(str_count(tolower(x), letters) == str_count(tolower(y), letters)) == length(letters)){
-    "Those two vectors are an anagram of one another"
+    "Those two strings are an anagram of one another"
   } 
   else{
-    "Those two vectors are not an anagaram of one another"
+    "Those two strings are not an anagaram of one another"
   }
 }
 # Example
