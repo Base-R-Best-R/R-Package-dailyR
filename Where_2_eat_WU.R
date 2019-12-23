@@ -4,7 +4,6 @@
 # Note: Executing the function on weekends will throw an error since the restaurants arent open.
 # Also keep in mind that the html code of the underlying websites are subject to changes, potentially causing errors
 #####################################################################################################################
-weekdays(Sys.Date()) %in% c("Samstag", "Sonntag")
 where.2.eat <- function(){
   #Error when function is called on weekends
   if(weekdays(Sys.Date()) %in% c("Samstag", "Sonntag")){
