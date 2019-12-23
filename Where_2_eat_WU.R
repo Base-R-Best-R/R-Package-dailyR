@@ -1,10 +1,15 @@
 # Where 2 eat function 
 # Scrapes Lunch menus of 2 WU campus restaurants the Mensa and Library Cafe.
 # Running the function will install packages required and call then return the menus of the current day
-# note that weekends will yield a few empy strings and Null since there are no lunch menus on weekends
-########################################################################################################
-rm(list = ls())
+# Note: Executing the function on weekends will throw an error since the restaurants arent open.
+# Also keep in mind that the html code of the underlying websites are subject to changes, potentially causing errors
+#####################################################################################################################
+weekdays(Sys.Date()) %in% c("Samstag", "Sonntag")
 where.2.eat <- function(){
+  #Error when function is called on weekends
+  if(weekdays(Sys.Date()) %in% c("Samstag", "Sonntag")){
+    stop("Error: No lunch menus on weekends.")
+  }
   #Supreess warnings and messages 
   suppressWarnings({
     suppressMessages({
@@ -22,7 +27,7 @@ where.2.eat <- function(){
       library <- html("https://www.library-cafe.at/tagesmenue-wien/")
       # scrape text of specific html node
       library.text <- library %>%
-        html_nodes("div p") %>%
+        html_nodes("p span") %>%
         html_text()
       # filter for weekdays
       library.tag <- library.text[which(substr(library.text, 1, 6) %in% c("Montag", "Dienst", "Mittwo","Donner", "Freita"))]
@@ -53,3 +58,6 @@ where.2.eat <- function(){
 }
 #
 where.2.eat()
+##
+
+
