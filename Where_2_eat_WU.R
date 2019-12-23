@@ -10,7 +10,7 @@ where.2.eat <- function(){
   if(weekdays(Sys.Date()) %in% c("Samstag", "Sonntag")){
     stop("Error: No lunch menus on weekends.")
   }
-  #Supreess warnings and messages 
+  #Supreess warnings and messages
   suppressWarnings({
     suppressMessages({
       #to make sure every needed package is installed and loaded
@@ -59,5 +59,3 @@ where.2.eat <- function(){
 #
 where.2.eat()
 ##
-
-
