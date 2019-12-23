@@ -1,7 +1,8 @@
 # Where 2 eat function 
 # Scrapes Lunch menus of 2 WU campus restaurants the Mensa and Library Cafe.
 # Running the function will install packages required and call then return the menus of the current day
-# note that weekends will yield a few empy strings and Null since there are no lunch menus on weekends
+# Note: that weekends will yield a few empy strings and Null since there are no lunch menus on weekends
+# also keep in mind that the html code of the underlying websites are subject to changes, potentially causing errors
 ########################################################################################################
 rm(list = ls())
 where.2.eat <- function(){
