@@ -2,7 +2,7 @@
 # Scrapes Lunch menus of 2 WU campus restaurants the Mensa and Library Cafe.
 # Running the function will install packages required and call then return the menus of the current day
 # Note: Executing the function on weekends will throw an error since the restaurants arent open.
-# Also keep in mind that the html code of the underlying websites are subject to changes, potentially causing errors
+# Also keep in mind that the html code of the underlying websites are subject to change, potentially causing errors
 #####################################################################################################################
 where.2.eat <- function(){
   #Error when function is called on weekends
