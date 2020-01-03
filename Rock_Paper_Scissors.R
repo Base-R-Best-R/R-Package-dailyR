@@ -21,6 +21,7 @@ RPS <- function(choice){
     list("Did I win?" = "You lost", "Opponent" = paste("Your opponent chose", NPC))
   }
 }
+
 #Example
 RPS("Paper")
 #$`Did I win?`
@@ -28,3 +29,6 @@ RPS("Paper")
 
 #$Opponent
 #[1] "Your opponent chose paper"
+##########
+RPS("pApeR")[[1]]
+#"You lost"
