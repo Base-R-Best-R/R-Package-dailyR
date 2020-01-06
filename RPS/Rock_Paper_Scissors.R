@@ -43,14 +43,12 @@ RPS <- function(choice){
           NPC == "paper"){
     #list("Did I win?" = "You won", "Opponent" = paste("Your opponent chose", NPC))
     list(plot_jpeg(paste0(choice,".jpg"),"You", subt = "You Won!"), plot_jpeg(paste0(NPC,".jpg"),"Opponent", subt = "You got lucky!"))
-    
-  }
+    }
   # All remaining combinations result in a loss
   else{
     #list("Did I win?" = "You lost", "Opponent" = paste("Your opponent chose", NPC))
     list(plot_jpeg(paste0(choice,".jpg"),"You", subt = "You Lost!"), plot_jpeg(paste0(NPC,".jpg"),"Opponent", subt = "You are trash!"))
-    
-  }
+    }
 }
 ## The function isn't case sensitive but it requires correct spelling.
 RPS("papEr")
