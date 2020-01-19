@@ -1,6 +1,7 @@
 # Package Call / Install function:
 # given a vector of packages (as strings), this function first checks if a package is installed
-# if it is then it is only called otherwise its installed and then called
+# if it is, it is only called otherwise its installed and then called
+# duplicate functions within packages are returned as a warning message
 get.package <- function(packages){
  suppressWarnings({
   lst <- list()
