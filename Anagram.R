@@ -5,12 +5,12 @@ library(stringr)
 # Function
 ana <- function(x, y){
   if(sum(str_count(tolower(x), letters) == str_count(tolower(y), letters)) == length(letters)){
-    "Those two strings are an anagram of one another"
+   TRUE
   } 
   else{
-    "Those two strings are not an anagaram of one another"
+   FALSE
   }
 }
 # Example
 ana("Silent", "Listen")
-#[1] "Those two strings are an anagram of one another"
+#[1] TRUE

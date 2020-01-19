@@ -4,7 +4,7 @@
 fooapply <- function(x, functions = c("mean", "median", "sd", "IQR", "quantile"), na.rm = T){
   func <- functions
   lis <- list()
-  for(i in 1:length(func)){
+  for(i in seq.int(length(func))){
     if(na.rm == T){
       eval(parse(text = paste0("lis[[", i,"]]", "<-", func[i], "(x, na.rm = T)")))
     } 
