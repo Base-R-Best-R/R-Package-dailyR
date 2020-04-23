@@ -58,7 +58,7 @@ ki_Boot(x, var)
 # Lower     Upper 
 # 0.9068061 1.0946311 
 
-# 95% KI for an arbitrary custom function:
+# 99% KI for an arbitrary custom function:
 
 ki_Boot(x, function(x) mean(x) * var(x), 0.99, 10000)
 
