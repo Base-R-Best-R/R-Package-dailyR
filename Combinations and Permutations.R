@@ -1,5 +1,4 @@
 # The following functions allow for quick permutation and combination calculations.#
-# The code was written by Gregor Steiner and myself.
 #  Binomial coefficient
 binc <- function(n, k){
   return(factorial(n) / (factorial(n-k) * factorial(k)))
