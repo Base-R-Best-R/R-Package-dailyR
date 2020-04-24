@@ -14,21 +14,29 @@
 
 # size ... amount of samples drawn - DEFAULT: 25000
 
+# na.rm ... optionally omitts NA's from the supplied vector
+
+# "..." ... additional arguments for the funtion, example at the end
+
 ##########################################################################################
 
-ki_Boot <- function(x, fun = mean, a = 0.95, size = 25000){
-# length and result from vec
+ki_Boot <- function(x, FUN = mean, a = 0.95, size = 25000, na.rm = F, ...){
+    # remove NA's if specified
+    if(na.rm == T){
+     x <- x[!is.na(x)]
+     }
+  # length and result from FUN applied to x
   n <- length(x)
-  z <- fun(x)
+  z <- FUN(x, ...)
   # Error 
     if(length(z) != 1){
-    stop("Error: Function returns object of length != 1, where 1 was expected")
+      stop("Error: Function returns object of length != 1, where 1 was expected")
     } 
   # Sample
   boot <- matrix(sample(x, n * size, replace = T),
                  ncol = size, nrow = n)
   # Columnwise fun
-  funs <- apply(boot, 2, fun)
+  funs <- apply(boot, 2, FUN)
   # Differences
   dif <- funs - z
   # alpha
@@ -57,6 +65,17 @@ ki_Boot(x, var)
 
 # Lower     Upper 
 # 0.9068061 1.0946311 
+
+# 95% KI for the mean of y which includes missing values, additionally supplying arguments 
+# to the function via ...
+
+y <- sample(c(NA, 1, 2, 3), 1000, replace = T)
+
+ki_Boot(y, mean, trim = 0.5) # where trim = 0.5 is an additional argument forwarded to 
+# mean(x, ...) 
+
+# Lower    Upper 
+# 1.973753 2.089239
 
 # 95% KI for an arbitrary custom function:
 
