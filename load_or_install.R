@@ -1,7 +1,11 @@
 # Package Call / Install function:
+
 # given a vector of packages (as strings), this function first checks if a package is installed
+
 # if it is, it is only called otherwise its installed and then called
+
 # duplicate functions across packages are returned as a warning message
+
 get.package <- function(packages){
  suppressWarnings({
   lst <- list()
@@ -19,5 +23,22 @@ get.package <- function(packages){
                    paste(" ",s[duplicated(s)], "\n")))
    }
 }
-#
-get.package()
+
+get.package(c("dplyr", "ggplot2", "readr", "AER"))
+
+# Alt without loops
+
+get.package2 <- function(package){
+   
+   lapply(package, function(x){
+      if(!require(x, character.only = T)){
+         install.packages(x)
+      }
+      library(x, character.only = T)     
+   })
+   
+}
+
+get.package2(c("dplyr", "ggplot2", "readr", "AER"))
+
+sessionInfo()
